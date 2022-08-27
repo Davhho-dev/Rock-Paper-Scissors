@@ -75,6 +75,11 @@
                     //break loop until first winner to 5
                     if(playerCount === 5 || computerCount === 5) break;
                 }
+              return checkWinner(playerCount, computerCount);
+            }
+
+            //Helper function to check winner
+            function checkWinner(playerCount, computerCount) {
                 if(playerCount > computerCount) {
                     return `You win! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
                 }else if(playerCount < computerCount){
