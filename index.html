@@ -16,7 +16,22 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-                
+                let playerChoice = convertPlayerSelection(playerSelection);
+                if(playerChoice === computerSelection) {
+                    return "You tied!";
+                }else if(playerChoice === 1 && computerSelection == 2) {
+                    return "You lose! Paper beats Rock.";
+                }else if(playerChoice === 1 && computerSelection == 3) {
+                    return "You win! Rock beats Scissors.";
+                }else if(playerChoice === 2 && computerSelection == 3) {
+                    return "You lose! Scissors beats Paper.";
+                }else if(playerChoice === 2 && computerSelection == 1) {
+                    return "You win! Paper beats Rock.";
+                }else if(playerChoice === 3 && computerSelection == 1) {
+                    return "You lose! Rock beats Scissors";
+                }else {
+                    return "You win! Scissors beats Paper.";
+                }
             }
 
             //Convert player's selection to a num
@@ -31,7 +46,7 @@
                 }
             }
 
-            console.log(convertPlayerSelection("ROCK"));
+            console.log(convertPlayerSelection("scissors"));
         </script>
     </body>
 </html>
