@@ -67,6 +67,7 @@
                         computerCount++;
                         console.log("Computer count: " + computerCount);
                     }
+                    //break loop until first winner to 5
                     if(playerCount === 5 || computerCount === 5) break;
                 }
                 if(playerCount > computerCount) {
@@ -77,6 +78,14 @@
                     return `You tied! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
                 }
             }
+
+            //Test function to convert num to string Rock Paper or Scissors
+            function convertNum(numChoice) {
+                if(numChoice === 1) return "rock"
+                else if(numChoice === 2) return "paper"
+                else return "scissors";
+            }
+            
 
             //Testing Code Section
             const playerSelection = "ROCK";
