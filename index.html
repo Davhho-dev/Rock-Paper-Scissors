@@ -18,25 +18,25 @@
             function playRound(playerSelection, computerSelection) {
                 let playerChoice = convertPlayerSelection(playerSelection);
                 if(playerChoice === computerSelection) {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You tied!";
                 }else if(playerChoice === 1 && computerSelection == 2) {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You lose! Paper beats Rock.";
                 }else if(playerChoice === 1 && computerSelection == 3) {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You win! Rock beats Scissors.";
                 }else if(playerChoice === 2 && computerSelection == 3) {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You lose! Scissors beats Paper.";
                 }else if(playerChoice === 2 && computerSelection == 1) {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You win! Paper beats Rock.";
                 }else if(playerChoice === 3 && computerSelection == 1) {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You lose! Rock beats Scissors";
                 }else {
-                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`)
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You win! Scissors beats Paper.";
                 }
             }
@@ -56,20 +56,25 @@
             function game() {
                 let playerCount = 0;
                 let computerCount = 0;
-                while(playerCount === 5 || computerCount === 5) {
+                for(let i = 0; i < 20; i++) {
                     let playerChoice = prompt("Select Rock, Paper, or Scissors!");
                     let computerChoice = getComputerChoice();
                     let round = playRound(playerChoice, computerChoice);
                     if(round.includes("win")) {
                         playerCount++;
+                        console.log("Player count: " + playerCount);
                     }else if(round.includes("lose")){
                         computerCount++;
+                        console.log("Computer count: " + computerCount);
                     }
+                    if(playerCount === 5 || computerCount === 5) break;
                 }
                 if(playerCount > computerCount) {
                     return `You win! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
-                }else {
+                }else if(playerCount < computerCount){
                     return `You lose! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
+                }else {
+                    return `You tied! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
                 }
             }
 
