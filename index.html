@@ -44,13 +44,9 @@
             //Convert player's selection to a num
             function convertPlayerSelection(playerSelection) {
                 let lowerCase = playerSelection.toLowerCase();
-                if(lowerCase === "rock") {
-                    return 1;
-                }else if(lowerCase === "paper") {
-                    return 2;
-                }else {
-                    return 3;
-                }
+                if(lowerCase === "rock") return 1;
+                else if(lowerCase === "paper") return 2;
+                else return 3;
             }
 
             function game() {
@@ -59,13 +55,22 @@
                 for(let i = 0; i < 20; i++) {
                     let playerChoice = prompt("Select Rock, Paper, or Scissors!");
                     let computerChoice = getComputerChoice();
+                    //Test
+                    let playerConvert = convertNum(convertPlayerSelection(playerChoice));
+                    let computerConvert = convertNum(computerChoice);
+                    //Test
                     let round = playRound(playerChoice, computerChoice);
                     if(round.includes("win")) {
                         playerCount++;
-                        console.log("Player count: " + playerCount);
+                        //console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
+                        //console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
                     }else if(round.includes("lose")){
                         computerCount++;
-                        console.log("Computer count: " + computerCount);
+                       //console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
+                        //console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
+                    }else {
+                        //console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
+                        //console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
                     }
                     //break loop until first winner to 5
                     if(playerCount === 5 || computerCount === 5) break;
