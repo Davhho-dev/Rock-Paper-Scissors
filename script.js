@@ -1,15 +1,21 @@
 let playerChoice = 0;
+let playerCount = 0;
+let computerCount= 0;
 const playerBtn = document.querySelectorAll(".player button");
 
 playerBtn.forEach((button) => {
     button.addEventListener("click", () => {
+        const output = document.querySelector(".output");
+        const result = document.querySelector(".results");
+        const pScore = document.querySelector(".playerScore span");
+        const cScore = document.querySelector(".computerScore span");
         let computerChoice = getComputerChoice();
         playerChoice = convertPlayerSelection(button.classList[0]);
-        const output = document.querySelector(".output");
-        console.log(playerChoice);
-        const result = document.querySelector(".results");
-        result.textContent = playRound(playerChoice, computerChoice);
-        output.textContent = `You selected: ${playerChoice}. Computer selected: ${computerChoice}.`;
+        let round = scoreCounter((playRound(playerChoice, computerChoice)));
+        output.textContent = `You selected: ${button.classList[0]}. Computer selected: ${convertNum(computerChoice)}.`;
+        result.textContent = round;
+        pScore.textContent = round[0];
+        cScore.textContent = round[1];
     })
 });
 
@@ -54,10 +60,7 @@ function convertPlayerSelection(playerSelection) {
     else return 3;
 }
 
-function scoreCounter(playerSelection, computerSelection) {
-    let playerCount = 0;
-    let computerCount = 0;
-    let round = playRound(playerSelection, computerSelection);
+function scoreCounter(round) {
     if(round.includes("win")) {
         playerCount++;
     }else if(round.includes("lose")) {
@@ -109,9 +112,9 @@ function checkWinner(playerCount, computerCount) {
 
 //Test function to convert num to string Rock Paper or Scissors
 function convertNum(numChoice) {
-    if(numChoice === 1) return "rock"
-    else if(numChoice === 2) return "paper"
-    else return "scissors";
+    if(numChoice === 1) return "Rock"
+    else if(numChoice === 2) return "Paper"
+    else return "Scissors";
 }
 
 
