@@ -1,0 +1,57 @@
+* {
+ box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    min-height: 100%;
+    margin: 0;
+}
+
+.container {
+    margin: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20%;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5%;
+}
+
+button {
+    text-align: center;
+    font-size: 2rem;
+    height: 100px;
+    width: 200px;
+}
+
+.select {
+    transform: scale(1.1);
+    border-color:#ffc600;
+    box-shadow: 0 0 10px #ffc600;
+}
+
+.output {
+    color: white;
+    text-align: center;
+}
+
+.results {
+    color: white;
+    text-align: center;
+}
+
+.score {
+    margin: 20px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
