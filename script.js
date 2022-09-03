@@ -1,21 +1,26 @@
-let playerChoice = 0;
 let playerCount = 0;
 let computerCount= 0;
 const playerBtn = document.querySelectorAll(".player button");
+const playAgain = document.querySelector(".again");
 
 playerBtn.forEach((button) => {
     button.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let playerChoice = convertPlayerSelection(button.classList[0]);
+       
         const output = document.querySelector(".output");
         const result = document.querySelector(".results");
         const pScore = document.querySelector(".playerScore span");
         const cScore = document.querySelector(".computerScore span");
-        let computerChoice = getComputerChoice();
-        playerChoice = convertPlayerSelection(button.classList[0]);
-        let round = scoreCounter((playRound(playerChoice, computerChoice)));
+
+        let play = playRound(playerChoice, computerChoice);
+        let round = scoreCounter(play);
+        let playGame = game(round);
         output.textContent = `You selected: ${button.classList[0]}. Computer selected: ${convertNum(computerChoice)}.`;
-        result.textContent = round;
         pScore.textContent = round[0];
         cScore.textContent = round[1];
+        const winner = document.querySelector(".winner");
+        winner.textContent = playGame;
     })
 });
 
@@ -72,42 +77,12 @@ function scoreCounter(round) {
     return [playerCount, computerCount];
 }
 
-//Play a game until first winner to 5
-function game(playerSelection, computerSelection) {
-    let playerCount = 0;
-    let computerCount = 0;
-    for(let i = 0; i < 20; i++) {
-        let playerConvert = convertNum(playerSelection);
-        let computerConvert = convertNum(computerSelection);å
-        let round = playRound(playerSelection, computerSelection);
-        if(round.includes("win")) {
-            playerCount++;
-            console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
-            console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
-        }else if(round.includes("lose")){
-            computerCount++;
-            console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
-            console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
-        }else {
-            console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
-            console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
-        }
-        //break loop until first winner to 5
-        if(playerCount === 5 || computerCount === 5) break;
-    }
-  return checkWinner(playerCount, computerCount);
-}
-
-
-//Helper function to check winner
-function checkWinner(playerCount, computerCount) {
-    if(playerCount > computerCount) {
-        return `You win! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
-    }else if(playerCount < computerCount){
-        return `You lose! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
-    }else {
-        return `You tied! Player Score: ${playerCount}. Computer Score: ${computerCount}.`
-    }
+//new game function
+function game(scoreCounter) {
+    let playerScore = scoreCounter[0];
+    let computerScore = scoreCounter[1];
+    if(playerScore > computerScore && playerScore === 5) return "You win!"
+    else if(playerScore < computerScore && computerScore === 5) return "You lose!"
 }
 
 //Test function to convert num to string Rock Paper or Scissors
@@ -116,11 +91,3 @@ function convertNum(numChoice) {
     else if(numChoice === 2) return "Paper"
     else return "Scissors";
 }
-
-
-/*Testing Code Section
-const playerSelection = "ROCK";
-const computerSelection = getComputerChoice();
-console.log("1 = Rock \n2 = Paper \n3 = Scissors");
-console.log(game());
-*/

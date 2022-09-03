@@ -8,6 +8,13 @@ body {
     margin: 0;
 }
 
+.title {
+    margin: 10%;
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+}
+
 .container {
     margin: 10%;
     display: flex;
@@ -23,7 +30,7 @@ body {
     gap: 5%;
 }
 
-button {
+.player button {
     text-align: center;
     font-size: 2rem;
     height: 100px;
@@ -41,7 +48,9 @@ button {
     text-align: center;
 }
 
-.results {
+.results,
+.winner {
+    margin: 10%;
     color: white;
     text-align: center;
     font-size: 25px;
