@@ -18,29 +18,28 @@
             function playRound(playerSelection, computerSelection) {
                 let playerChoice = convertPlayerSelection(playerSelection);
                 if(playerChoice === computerSelection) {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You tied!";
                 }else if(playerChoice === 1 && computerSelection == 2) {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You lose! Paper beats Rock.";
                 }else if(playerChoice === 1 && computerSelection == 3) {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You win! Rock beats Scissors.";
                 }else if(playerChoice === 2 && computerSelection == 3) {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You lose! Scissors beats Paper.";
                 }else if(playerChoice === 2 && computerSelection == 1) {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You win! Paper beats Rock.";
                 }else if(playerChoice === 3 && computerSelection == 1) {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You lose! Rock beats Scissors";
                 }else {
-                    //console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
+                    console.log(`Player: ${playerChoice}. Computer: ${computerSelection}`);
                     return "You win! Scissors beats Paper.";
                 }
             }
-
             //Convert player's selection to a num
             function convertPlayerSelection(playerSelection) {
                 let lowerCase = playerSelection.toLowerCase();
@@ -48,7 +47,7 @@
                 else if(lowerCase === "paper") return 2;
                 else return 3;
             }
-
+            //Play a game until first winner to 5
             function game() {
                 let playerCount = 0;
                 let computerCount = 0;
@@ -62,15 +61,15 @@
                     let round = playRound(playerChoice, computerChoice);
                     if(round.includes("win")) {
                         playerCount++;
-                        //console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
-                        //console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
+                        console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
+                        console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
                     }else if(round.includes("lose")){
                         computerCount++;
-                       //console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
-                        //console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
+                        console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
+                        console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
                     }else {
-                        //console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
-                        //console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
+                        console.log(`Player choses: ${playerConvert}. Computer chose: ${computerConvert}.`);
+                        console.log(`Player count: ${playerCount}. Computer count: ${computerCount}`);
                     }
                     //break loop until first winner to 5
                     if(playerCount === 5 || computerCount === 5) break;
@@ -78,6 +77,7 @@
               return checkWinner(playerCount, computerCount);
             }
 
+            
             //Helper function to check winner
             function checkWinner(playerCount, computerCount) {
                 if(playerCount > computerCount) {
