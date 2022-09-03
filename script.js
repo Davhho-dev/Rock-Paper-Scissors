@@ -3,12 +3,13 @@ const playerBtn = document.querySelectorAll(".player button");
 
 playerBtn.forEach((button) => {
     button.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
         playerChoice = convertPlayerSelection(button.classList[0]);
         const output = document.querySelector(".output");
-        output.textContent = `You selected: ${button.classList}.`;
         console.log(playerChoice);
         const result = document.querySelector(".results");
-        result.textContent = playRound(playerChoice, getComputerChoice());
+        result.textContent = playRound(playerChoice, computerChoice);
+        output.textContent = `You selected: ${playerChoice}. Computer selected: ${computerChoice}.`;
     })
 });
 
@@ -52,6 +53,22 @@ function convertPlayerSelection(playerSelection) {
     else if(lowerCase === "paper") return 2;
     else return 3;
 }
+
+function scoreCounter(playerSelection, computerSelection) {
+    let playerCount = 0;
+    let computerCount = 0;
+    let round = playRound(playerSelection, computerSelection);
+    if(round.includes("win")) {
+        playerCount++;
+    }else if(round.includes("lose")) {
+        computerCount++;
+    }else {
+        playerCount = playerCount;
+        computerCount = computerCount;
+    }
+    return [playerCount, computerCount];
+}
+
 //Play a game until first winner to 5
 function game(playerSelection, computerSelection) {
     let playerCount = 0;
